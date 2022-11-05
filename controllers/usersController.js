@@ -16,6 +16,7 @@ const randomUser = async (req, res) => {
  * @param res - The response object.
  */
 const allUsers = async (req, res) => {
+    console.log(Users.length);
     if (req.query === "limit") {
         const { limit } = req.query
         const limitedUser = Users.slice(0, limit)
@@ -24,7 +25,18 @@ const allUsers = async (req, res) => {
     res.send(Users)
 }
 
+const saveUser = async (req, res) => {
+    const userInfo = req.body
+    console.log(userInfo)
+    if (!userInfo.id || !userInfo.gender || !userInfo.name || !userInfo.contact || !userInfo.address || !userInfo.photoUrl) {
+        res.send("Please fill all the info")
+    }
+    Users.push(userInfo)
+    res.send("User post Successfully")
+}
+
 module.exports = {
     randomUser,
     allUsers,
+    saveUser,
 }
