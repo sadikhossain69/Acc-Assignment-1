@@ -16,9 +16,12 @@ const randomUser = async (req, res) => {
  * @param res - The response object.
  */
 const allUsers = async (req, res) => {
-    const { limit } = req.query
-    const limitedUser = Users.slice(0, limit)
-    res.send(limitedUser)
+    if (req.query === "limit") {
+        const { limit } = req.query
+        const limitedUser = Users.slice(0, limit)
+        res.send(limitedUser)
+    }
+    res.send(Users)
 }
 
 module.exports = {
