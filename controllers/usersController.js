@@ -39,4 +39,4 @@ module.exports = {
     randomUser,
     allUsers,
     saveUser,
-}
+} 
