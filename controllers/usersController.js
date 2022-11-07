@@ -1,4 +1,4 @@
-const Users = require("../utils/Users")
+let Users = require("../utils/Users")
 
 /**
  * It takes a request and a response, and sends a random user from the Users array.
@@ -80,9 +80,17 @@ const updateUser = async (req, res) => {
     res.send(updatedData)
 }
 
+const deleteUser = async (req, res) => {
+    let { id } = req.params
+    const newUsers = Users.filter(user => user.id !== Number(id))
+    Users.push(newUsers)
+    res.send(Users)
+}
+
 module.exports = {
     randomUser,
     allUsers,
     saveUser,
     updateUser,
+    deleteUser,
 } 
