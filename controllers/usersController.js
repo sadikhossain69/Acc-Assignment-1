@@ -25,6 +25,13 @@ const allUsers = async (req, res) => {
     res.send(Users)
 }
 
+/**
+ * It takes the request body, and if it doesn't have all the required fields, it sends a message to the
+ * user. Otherwise, it adds the user to the Users array and sends a success message.
+ * @param req - The request object. This contains information about the HTTP request that raised the
+ * event.
+ * @param res - The response object.
+ */
 const saveUser = async (req, res) => {
     const userInfo = req.body
     console.log(userInfo)
